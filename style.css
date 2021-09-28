@@ -1,0 +1,47 @@
+/**********/
+/* Styles */
+/**********/
+
+body {
+    background-color: #90be6d;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.4rem;
+  }
+  
+  .header {
+    background: #9ec581;
+    margin: 5rem auto;
+  }
+  
+  .header-h1 {
+    font-size: 3rem;
+  }
+  
+  .display-place {
+    margin: 0 auto;
+    height: auto;
+  }
+  
+  .btn-search:hover {
+    background-color: #1d493c;
+  }
+  
+  /***************/
+  /* Media query */
+  /***************/
+  
+  @media (min-width: 576px) {
+    body {
+      font-size: 1.6rem;
+    }
+  
+    .header,
+    .search-form {
+      width: 70%;
+    }
+  
+    .country-card {
+      max-width: 25rem;
+    }
+  }
+  
