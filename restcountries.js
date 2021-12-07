@@ -8,13 +8,13 @@ document.querySelector("form").addEventListener("submit", (event) => {
     `;
     document.querySelector(".js-region").innerHTML = regionDisplay;
   
-    fetch(`https://restcountries.com/v3/region/${region}`)
+    fetch(`https://restcountries.com/v3.1/region/${region}`)
       .then((result) => result.json())
       .then((data) => {
         const countryList = data;
   
-        const markup = countryList
-          .map(
+        const markup = countryList.map
+          (
             (country) => `
             <div class="
               card 
@@ -28,7 +28,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
               rounded  
               country-card">
               
-                <img src="${country.flags[1]}"
+                <img src="${Object.values(country.flags)[0]}"
                  class="card-img-top border" alt="Flag of ${country.name.common}">
               
                 <table class="table table-success table-striped">
@@ -38,7 +38,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
                     </tr>
                     <tr>
                     <th scope="row">Capital:</th>
-                      <td>${country.capital.join(", ")}</td>
+                      <td>${(country.capital).join(", ")}</td>
                     </tr>
                     <tr>
                     <th scope="row">Region:</th>
@@ -64,7 +64,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
         document.querySelector(".js-countrys").innerHTML = markup;
       })
       .catch((error) => {
-        console.error("Error:", error);
+        console.log("Error:", error);
       });
   });
   

@@ -25,6 +25,10 @@ body {
   .btn-search:hover {
     background-color: #1d493c;
   }
+
+  .country-card {
+    max-width: 25rem;
+  }
   
   /***************/
   /* Media query */
@@ -41,7 +45,6 @@ body {
     }
   
     .country-card {
-      max-width: 25rem;
+      width: 25rem;
     }
   }
-  
