@@ -1,21 +1,21 @@
 document.querySelector("form").addEventListener("submit", (event) => {
-    event.preventDefault();
-  
-    const region = document.querySelector("[name=region]").value;
-  
-    const regionDisplay = `
+  event.preventDefault();
+
+  const region = document.querySelector("[name=region]").value;
+
+  const regionDisplay = `
           <div class="text-center fs-1">Countries of ${region}</div>
     `;
-    document.querySelector(".js-region").innerHTML = regionDisplay;
-  
-    fetch(`https://restcountries.com/v3.1/region/${region}`)
-      .then((result) => result.json())
-      .then((data) => {
-        const countryList = data;
-  
-        const markup = countryList.map
-          (
-            (country) => `
+  document.querySelector(".js-region").innerHTML = regionDisplay;
+
+  fetch(`https://restcountries.com/v3.1/region/${region}`)
+    .then((result) => result.json())
+    .then((data) => {
+      const countryList = data;
+
+      const markup = countryList
+        .map(
+          (country) => `
             <div class="
               card 
               d-flex 
@@ -29,42 +29,47 @@ document.querySelector("form").addEventListener("submit", (event) => {
               country-card">
               
                 <img src="${Object.values(country.flags)[0]}"
-                 class="card-img-top border" alt="Flag of ${country.name.common}">
+                 class="card-img-top border" alt="Flag of ${
+                   country.name.common
+                 }">
               
-                <table class="table table-success table-striped">
-                    <tr>
-                      <th scope="row">Name:</th> 
-                      <td>${country.name.common}</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">Capital:</th>
-                      <td>${(country.capital).join(", ")}</td>
-                    </tr>
-                    <tr>
-                    <th scope="row">Region:</th>
-                      <td>${country.region}</td>
-                    </tr>
-                    <tr>
-                    <th scope="row" >Languages:</th>
-                    <td>
-                     ${Object.values(country.languages).join(", ")} 
-                    </td>  
-                    </tr> 
-                    <tr>
-                    <th scope="row">Currencies:</th>
+                <div class="table-responsive-sm">
+                  <table class="table table-success table-striped">
+                      <tr>
+                        <th scope="row">Name:</th> 
+                        <td>${country.name.common}</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">Capital:</th>
+                        <td>${country.capital}</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">Region:</th>
+                        <td>${country.region}</td>
+                      </tr>
+                      <tr>
+                      <th scope="row" >Languages:</th>
                       <td>
-                      ${Object.values(Object.keys(country.currencies)).join(", ")}
-                      </td>
-                    </tr>
-                </table>
+                      ${Object.values(country.languages).join(", ")} 
+                      </td>  
+                      </tr> 
+                      <tr>
+                      <th scope="row">Currencies:</th>
+                        <td>
+                        ${Object.values(Object.keys(country.currencies)).join(
+                          ", "
+                        )}
+                        </td>
+                      </tr>
+                  </table>
+                </div>
               </div>
             `
-          )
-          .join("");
-        document.querySelector(".js-countrys").innerHTML = markup;
-      })
-      .catch((error) => {
-        console.log("Error:", error);
-      });
-  });
-  
+        )
+        .join("");
+      document.querySelector(".js-countrys").innerHTML = markup;
+    })
+    .catch((error) => {
+      console.log("Error:", error);
+    });
+});
