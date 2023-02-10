@@ -2,4 +2,4 @@
 ## Hosting: https://krisztinasamu.github.io/country_information_app/
 ## API: https://restcountries.com/
 ## A kiválasztott kontinens országainak információs kártyáját jeleníti meg.
-![country_app](https://user-images.githubusercontent.com/60664394/135077284-41af2ab7-7c66-471c-b792-998616115bc3.jpg)
+![Képernyőkép_20230208_134020](https://user-images.githubusercontent.com/60664394/218132697-4d6718af-4164-42b8-b658-930dcd03eef1.png)
